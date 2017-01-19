@@ -8,6 +8,5 @@ export default Ember.Route.extend({
             teammembers: this.store.findAll('teammember')
         });
     }
-    
 });
-        
+

@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     targetValue: 0,
-    targetNewValue: 0,
     tagName: 'tr',
     classNameBindings: ['workedEnough:worked-enough-individual'],
     classNames: ['individual-stats'],    
@@ -12,29 +11,21 @@ export default Ember.Component.extend({
     }),
     didReceiveAttrs() {
         this._super(...arguments);
-        let teammemberTarget = this.get('teammember.target')
+        let teammemberTarget = this.get('teammember.target');
         this.set('targetNewValue', teammemberTarget);
         
         let teammemberOwnId = this.get('teammember.id');
+        let myMonthlyCalendars = this.get('calendars');
         
-        let myCalendars = this.get('calendars').filter(function(calendar) {
+        let myCalendars = myMonthlyCalendars.filter(function(calendar) {
             let teammemberId = calendar.get('teammemberId');
             
             return teammemberOwnId == teammemberId;
         });
         
-        let myMonthlyCalendars = myCalendars.filter(function(calendar) {
-            let calendarDate = new Date(calendar.get('workDate'));
-            let currentDate = new Date();
-            let calendarMonth = calendarDate.getMonth();
-            let currentMonth = currentDate.getMonth();
-            
-            return calendarMonth === currentMonth; 
-        });
-        
         let total = 0;
         
-        myMonthlyCalendars.forEach(function(calendar) {
+        myCalendars.forEach(function(calendar) {
            total += calendar.get('duration');
         });
         
@@ -71,9 +62,6 @@ export default Ember.Component.extend({
                 this.set('targetNewValue', newValue);
                 this.set('targetValue', 0);
             }
-            
-
         }
     }
 });
-

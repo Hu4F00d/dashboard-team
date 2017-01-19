@@ -11,22 +11,15 @@ export default Ember.Component.extend({
         this._super(...arguments);
         
         
-        let total = 0,
+        let subTotal = 0,
             totalHours = 0;
             
-        let monthlyCalendars = this.get('calendars').filter(function(calendar) {
-            
-            let calendarDate = new Date(calendar.get('workDate'));
-            let currentDate = new Date();
-            let calendarMonth = calendarDate.getMonth();
-            let currentMonth = currentDate.getMonth();
-            
-            return calendarMonth === currentMonth;  
-        });
+        let monthlyCalendars = this.get('calendars');
             
         this.get('teammembers').forEach(function(teammember) {
-            total += teammember.get('target');
+            subTotal += teammember.get('target');
         });
+        let total = subTotal + this.get('updatedValue');
         this.set('teamTarget', total);
         
         monthlyCalendars.forEach(function(calendar) {
