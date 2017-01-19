@@ -6,6 +6,5 @@ export default DS.Model.extend({
     resource: DS.attr('string'),
     firstName: DS.attr('string'),
     lastName: DS.attr('string'),
-    calendars: DS.hasMany('calendar')
 });
 

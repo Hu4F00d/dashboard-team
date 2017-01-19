@@ -3,6 +3,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model() {
-        return this.get('store').findAll('calendar');    
+        return Ember.RSVP.hash({
+            calendars: this.store.findAll('calendar'),
+            teammembers: this.store.findAll('teammember')
+        });
     }
+    
 });
+        

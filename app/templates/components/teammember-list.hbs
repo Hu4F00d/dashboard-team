@@ -1,0 +1,15 @@
+<table>
+<tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Active</th>
+    <th>Resource</th>
+    <th>Target</th>
+    <th>Hs Worked</th>
+    <th>Update Target</th>
+</tr>
+{{#each teammembers as |teammember|}}
+    {{teammember-stats teammember=teammember calendars=calendars}}
+{{/each}}    
+</table>
+

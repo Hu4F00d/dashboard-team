@@ -1,0 +1,16 @@
+<div class='stat-group'>
+    <p class='overall-label'>Team Target:</p>
+    <p class='overall-stat worked-enough-{{workedEnough}}'>{{teamTarget}}</p>
+</div>
+<div class='stat-group'>
+    <p class='overall-label'>Hours Worked:</p>
+    <p class='overall-stat worked-enough-{{workedEnough}}'>{{hoursWorked}}</p>
+</div>
+<div class='stat-group'>
+    <p class='overall-label'>Target Achieved</p>
+    {{#if workedEnough}}
+        <p class='overall-stat worked-enough-{{workedEnough}}'>Yes</p>
+    {{else}}
+        <p class='overall-stat worked-enough-{{workedEnough}}'>No</p>
+    {{/if}}
+</div>
